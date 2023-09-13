@@ -7,7 +7,13 @@ const Tr = ({ student, deleteStudent, studentIndex }) => {
       <td>{student.name}</td>
       <td>{student.age}</td>
       <td>
-        <img src={student.avtar} alt="" height={"50px"} width={"50px"} />
+        <img
+          src={student.avtar}
+          alt=""
+          height={"60px"}
+          width={"60px"}
+          className="rounded-circle"
+        />
       </td>
       <td>{student.city}</td>
       <td>
