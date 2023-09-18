@@ -20,12 +20,7 @@ function App() {
     axios
       .post("https://64bfed3b0d8e251fd111b2b8.mockapi.io/student", student)
       .then((res) => {
-        console.log(res);
-        if (res.status == 201) {
-          let _students = students;
-          _students.push(res.data);
-          setStudents(_students);
-        }
+        setStudents([...students, res.data]);
       });
   };
 
