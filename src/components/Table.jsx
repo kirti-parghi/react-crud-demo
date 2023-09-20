@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import Tr from "./Tr";
 import axios from "axios";
 
-const Table = ({ students, deleteStudent }) => {
+const Table = ({ students, deleteStudent, editStudent }) => {
+  const [tableStudents, setTableStudents] = useState([]);
+
+  useEffect(() => {
+    setTableStudents(students);
+  }, [students]);
+
   return (
     <>
       <h1>Total Students {students.length}</h1>
@@ -18,14 +24,17 @@ const Table = ({ students, deleteStudent }) => {
           </tr>
         </thead>
         <tbody>
-          {students.map((student, studentIndex) => (
-            <Tr
-              student={student}
-              key={studentIndex}
-              deleteStudent={deleteStudent}
-              studentIndex={studentIndex}
-            />
-          ))}
+          {tableStudents.map((student, studentIndex) => {
+            return (
+              <Tr
+                student={student}
+                key={studentIndex}
+                deleteStudent={deleteStudent}
+                studentIndex={studentIndex}
+                editStudent={editStudent}
+              />
+            );
+          })}
         </tbody>
       </table>
     </>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Tr = ({ student, deleteStudent, studentIndex }) => {
+const Tr = ({ student, deleteStudent, studentIndex, editStudent }) => {
   return (
     <tr>
       <td>{studentIndex + 1}</td>
@@ -17,6 +17,14 @@ const Tr = ({ student, deleteStudent, studentIndex }) => {
       </td>
       <td>{student.city}</td>
       <td>
+        <button
+          className="btn btn-primary me-5"
+          onClick={() => {
+            editStudent(student);
+          }}
+        >
+          Edit
+        </button>
         <button
           className="btn btn-danger"
           onClick={() => {

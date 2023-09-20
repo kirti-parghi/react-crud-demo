@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Form = ({ insertStudent }) => {
-  const [tempStudent, setTempStudent] = useState({
-    id: "",
-    name: "",
-    age: 0,
-    avtar: "",
-    city: "",
-  });
+const Form = ({ insertStudent, updateStudent, studentToEdit }) => {
+  const [tempStudent, setTempStudent] = useState(studentToEdit);
+
+  useEffect(() => {
+    setTempStudent(studentToEdit);
+  }, [studentToEdit]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    insertStudent(tempStudent);
+    if (tempStudent.id == "") {
+      //insert
+      insertStudent(tempStudent);
+    } else {
+      //update
+      updateStudent(tempStudent);
+    }
+    setTempStudent({
+      id: "",
+      name: "",
+      age: 0,
+      avtar: "",
+      city: "",
+    });
   };
 
   return (
