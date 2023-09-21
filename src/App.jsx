@@ -38,7 +38,7 @@ function App() {
         student
       )
       .then((res) => {
-        let _students = students;
+        let _students = [...students];
         _students[_students.findIndex(({ id }) => id === student.id)] =
           res.data;
         setStudents(_students);
